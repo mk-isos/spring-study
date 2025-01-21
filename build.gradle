@@ -26,16 +26,17 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-devtools'
 
 	//250121 jdbc, h2 데이터베이스 관련 라이브러리 추가
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+//	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	runtimeOnly 'com.h2database:h2'
 
-	//250121 최신 Mockito 버전(mockito-core 및 mockito-inline)과 호환되는 JDK를 사용
-	testImplementation 'org.mockito:mockito-core:5.5.0'
-	testImplementation 'org.mockito:mockito-inline:5.5.0'
-
+//	//250121 최신 Mockito 버전(mockito-core 및 mockito-inline)과 호환되는 JDK를 사용
+//	testImplementation 'org.mockito:mockito-core:5.4.0'
+//	testImplementation 'org.mockito:mockito-inline:5.4.0'
 
 
 }
+
 
 tasks.named('test') {
 	useJUnitPlatform()
