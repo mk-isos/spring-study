@@ -29,6 +29,12 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	runtimeOnly 'com.h2database:h2'
 
+	//250121 최신 Mockito 버전(mockito-core 및 mockito-inline)과 호환되는 JDK를 사용
+	testImplementation 'org.mockito:mockito-core:5.5.0'
+	testImplementation 'org.mockito:mockito-inline:5.5.0'
+
+
+
 }
 
 tasks.named('test') {
