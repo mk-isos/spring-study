@@ -5,7 +5,7 @@
                 %msg%n</pattern>
         </encoder>
     </appender>
-    <root level="DEBUG"> //INFO or DEBUG 평소에는 info로
+    <root level="INFO"> //INFO or DEBUG 평소에는 info로
         <appender-ref ref="STDOUT" />
     </root>
 </configuration>
