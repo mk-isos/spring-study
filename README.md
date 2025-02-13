@@ -26,7 +26,7 @@ Spring 프로젝트 시작을 위한 학습 내용을 정리합니다.
 
 ---
 
-## 🔥 Spring Basic
+## Spring Basic
 Spring의 기본 개념을 학습합니다.
 
 <details>
