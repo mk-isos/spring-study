@@ -4,7 +4,7 @@
 
 ---
 
-## Spring Start
+## 1. Spring Start
 Spring 프로젝트 시작을 위한 학습 내용을 정리합니다.
 
 <details>
@@ -26,7 +26,7 @@ Spring 프로젝트 시작을 위한 학습 내용을 정리합니다.
 
 ---
 
-## Spring Basic
+## 2. Spring Basic
 Spring의 기본 개념을 학습합니다.
 
 <details>
@@ -50,7 +50,7 @@ Spring의 기본 개념을 학습합니다.
 
 ---
 
-## http
+## 3. HTTP
 모든 개발자를 위한 HTTP 웹 기본 지식을 학습합니다.
 
 <details>
@@ -73,7 +73,7 @@ Spring의 기본 개념을 학습합니다.
 
 ---
 
-## Spring MVC
+## 4. Spring MVC
 Spring MVC의 핵심 개념을 학습합니다.
 
 <details>
