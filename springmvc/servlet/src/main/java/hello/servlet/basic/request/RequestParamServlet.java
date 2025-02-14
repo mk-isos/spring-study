@@ -16,7 +16,7 @@ import java.util.Enumeration;
  * 2. 동일한 파라미터 전송 가능
  * http://localhost:8080/request-param?username=hello&username=kim&age=20
  */
-@WebServlet
+@WebServlet(name = "requestParamServlet", urlPatterns = "/request-param")
 public class RequestParamServlet extends HttpServlet {
 
     @Override
@@ -40,8 +40,13 @@ public class RequestParamServlet extends HttpServlet {
         System.out.println("[이름이 같은 복수 파라미터 조회]");
         System.out.println("request.getParameterValues(username)");
         String[] usernames = request.getParameterValues("username");
-        for (String name : usernames) {
-            System.out.println("username=" + name);
+        // Null 체크 추가
+        if (usernames != null) {
+            for (String name : usernames) {
+                System.out.println("username=" + name);
+            }
+        } else {
+            System.out.println("usernames is null");
         }
 
         response.getWriter().write("ok");
