@@ -27,6 +27,13 @@ public class ResponseHeaderServlet extends HttpServlet {
         response.setHeader("Pragma", "no-cache");
         response.setHeader("my-header", "hello");
 
+        //[Header 편의 메서드]
+        content(response);
+        cookie(response);
+        redirect(response);
+
+
+        //[message body]
         PrintWriter writer = response.getWriter();
         writer.println("ok");
         writer.println("안녕하세요. 마커스님");
