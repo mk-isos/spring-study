@@ -14,6 +14,6 @@ public class OldController implements Controller {
 
         System.out.println("OldController.handleRequest");
 
-        return null;
+        return new ModelAndView("new-form"); //논리 이름만 넣음
     }
 }
