@@ -8,13 +8,49 @@
         .container {
             max-width: 560px;
         }
+        .success-message {
+             background-color: #28a745; /* 초록색 배경 */
+             color: white; /* 흰색 글씨 */
+             font-size: 24px; /* 글씨 크기 */
+             font-weight: bold; /* 글씨 굵게 */
+             padding: 10px; /* 패딩 추가 */
+             text-align: center; /* 가운데 정렬 */
+             border-radius: 10px; /* 모서리 둥글게 */
+             margin-bottom: 20px; /* 아래쪽 여백 */
+             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+             animation: fadeIn 1s ease-in-out; /* 애니메이션 */
+        }
+
+        /* 애니메이션 효과 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
+
+
 </head>
 <body>
 <div class="container">
     <div class="py-5 text-center">
         <h2>상품 상세</h2>
     </div>
+
+    <!-- 추가 -->
+    <!--
+    <h2 th:if="${param.status}" th:text="'저장 완료!'"></h2>
+    -->
+
+    <!-- 내가 맘대로 추가 -->
+    <h2 th:if="${param.status}" class="success-message" th:text="'저장 완료!'"></h2>
+
+
     <div>
         <label for="itemId">상품 ID</label>
         <input type="text" id="itemId" name="itemId" class="form-control"
