@@ -30,15 +30,6 @@ public class BasicItemController {
         return "basic/items";
     }
 
-    /**
-     * 테스트용 데이터 추가
-     */
-    @PostConstruct
-    public void init() {
-        itemRepository.save(new Item("testA", 10000, 10));
-        itemRepository.save(new Item("testB", 20000, 20));
-    }
-
 //    @GetMapping("/{itemId}")
 //    public String item(@PathVariable Long itemId, Model model) {
 //        Item item = itemRepository.findById(itemId);
@@ -140,4 +131,32 @@ public class BasicItemController {
         return "basic/item";
     }
 
+//    @GetMapping("/{itemId}/edit")
+//    public String editForm(@PathVariable Long itemId, Model model) {
+//        Item item = itemRepository.findById(itemId);
+//        model.addAttribute("item", item);
+//        return "basic/editForm";
+//    }
+
+    @GetMapping("/{itemId}/edit")
+    public String editForm(@PathVariable(name = "itemId") Long itemId, Model model) {
+        Item item = itemRepository.findById(itemId);
+        model.addAttribute("item", item);
+        return "basic/editForm";
+    }
+
+    @PostMapping("/{itemId}/edit")
+    public String edit(@PathVariable(name = "itemId") Long itemId, @ModelAttribute Item item) {
+        itemRepository.update(itemId, item);
+        return "redirect:/basic/items/{itemId}";
+    }
+
+    /**
+     * 테스트용 데이터 추가
+     */
+    @PostConstruct
+    public void init() {
+        itemRepository.save(new Item("testA", 10000, 10));
+        itemRepository.save(new Item("testB", 20000, 20));
+    }
 }
