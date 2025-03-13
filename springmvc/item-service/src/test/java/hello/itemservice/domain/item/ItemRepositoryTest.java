@@ -2,6 +2,7 @@ package hello.itemservice.domain.item;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -17,6 +18,14 @@ class ItemRepositoryTest {
     void afterEach(){
         itemRepository.clearStore();
     }
+
+
+
+    @BeforeEach
+    void setUp() {
+        itemRepository.clearStore();
+    }
+
 
     @Test
     void save() {
