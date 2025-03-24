@@ -41,22 +41,44 @@ public class ValidationItemControllerV3 {
         return "validation/v3/addForm";
     }
 
+//    @PostMapping("/add")
+//    public String addItem(@Validated @ModelAttribute Item item, BindingResult
+//            bindingResult, RedirectAttributes redirectAttributes) {
+//
+//        //검증에 실패하면 다시 입력 폼으로
+//        if (bindingResult.hasErrors()) {
+//            log.info("errors={}", bindingResult);
+//            return "validation/v3/addForm";
+//        }
+//
+//        //성공 로직
+//        Item savedItem = itemRepository.save(item);
+//        redirectAttributes.addAttribute("itemId", savedItem.getId());
+//        redirectAttributes.addAttribute("status", true);
+//        return "redirect:validation/v3items/{itemId}";
+//    }
     @PostMapping("/add")
-    public String addItem(@Validated @ModelAttribute Item item, BindingResult
-            bindingResult, RedirectAttributes redirectAttributes) {
+    public String addItem(@Validated @ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
-        //검증에 실패하면 다시 입력 폼으로
+        //특정 필드 예외가 아닌 전체 예외
+        if (item.getPrice() != null && item.getQuantity() != null) {
+            int resultPrice = item.getPrice() * item.getQuantity();
+            if (resultPrice < 10000) {
+                bindingResult.reject("totalPriceMin", new Object[]{10000, resultPrice}, null);
+            }
+        }
+
         if (bindingResult.hasErrors()) {
             log.info("errors={}", bindingResult);
             return "validation/v3/addForm";
         }
-
         //성공 로직
         Item savedItem = itemRepository.save(item);
         redirectAttributes.addAttribute("itemId", savedItem.getId());
         redirectAttributes.addAttribute("status", true);
-        return "redirect:validation/v3items/{itemId}";
+        return "redirect:/validation/v3/items/{itemId}";
     }
+
 
     @GetMapping("/{itemId}/edit")
     public String editForm(@PathVariable Long itemId, Model model) {
