@@ -64,7 +64,7 @@ public class HomeController {
 
     }
 
-    @GetMapping("/")
+    //@GetMapping("/")
     public String homeLoginV3(HttpServletRequest request, Model model) {
 
         HttpSession session = request.getSession(false);
