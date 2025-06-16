@@ -37,6 +37,9 @@ public class JpaMain {
             member.setTeam(team);
             em.persist(member);
 
+            em.flush();
+            em.clear();
+
             //조회
             Member findMember = em.find(Member.class, member.getId());
             //연관관계가 없음
