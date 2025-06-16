@@ -27,10 +27,20 @@ public class JpaMain {
 
         //정석 코드 But 실제로는 스프링이 다 해줌
         try {
-            Member member1 = new Member();
-//            member1.setId("A");
-            member1.setUsername("C");
-            em.persist(member1);    // 멤버 저장
+
+            Team team = new Team();
+            team.setName("TeamA");
+            em.persist(team);
+
+            Member member = new Member();
+            member.setName("member1");
+            member.setTeam(team);
+            em.persist(member);
+
+            //조회
+            Member findMember = em.find(Member.class, member.getId());
+            //연관관계가 없음
+            Team findTeam = em.find(Team.class, team.getId());
 
             tx.commit();
         } catch (Exception e) {
