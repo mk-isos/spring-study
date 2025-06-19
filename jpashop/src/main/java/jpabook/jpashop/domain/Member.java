@@ -9,17 +9,11 @@ public class Member {
     @Column(name = "MEMBER_ID")
     private Long id;
     private String name;
-    private String city;
-    private String street;
-    private String zipcode;
 
-    public String getCity() {
-        return city;
-    }
+    @Embedded
+    private Address address;
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+
 
     public Long getId() {
         return id;
@@ -37,19 +31,11 @@ public class Member {
         this.name = name;
     }
 
-    public String getStreet() {
-        return street;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
