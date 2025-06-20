@@ -18,8 +18,13 @@ public class JpaMain {
             member.setAge(10);
             em.persist(member);
 
-            TypedQuery<Member> query = em.createQuery("select m from Member m", Member.class);
-            Query query1 = em.createQuery("select m from Member m where m.username = :username");
+            em.flush();
+            em.clear();
+
+            em.createQuery("select distinct m.username, m.age from Member m")
+                            .getResultList();
+
+
 
             tx.commit();
         } catch (Exception e) {
