@@ -19,6 +19,6 @@ public class Member {
     @Embedded
     private Address address;
 
-    @OneToMany
+    @OneToMany(mappedBy = "member") //mappedBy:읽기 전용이 되는 거
     private List<Order> orders = new ArrayList<>();
 }
