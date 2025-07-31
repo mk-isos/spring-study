@@ -20,6 +20,25 @@ public class ItemService {
         itemRepository.save(item);
     }
 
+//    @Transactional
+//    public void update(Item itemParam) { //itemParam: 파리미터로 넘어온 준영속 상태의 엔티티
+//        Item findItem = em.find(Item.class, itemParam.getId()); //같은 엔티티를 조회한다.
+//        findItem.setPrice(itemParam.getPrice()); //데이터를 수정한다.
+//    }
+//
+//    @Transactional
+//    public void update(Item itemParam) { //itemParam: 파리미터로 넘어온 준영속 상태의 엔티티
+//        Item mergeItem = em.merge(itemParam);
+//    }
+
+    @Transactional
+    public void updateItem(Long itemId, String name, int price, int stockQuantitiy) {
+        Item findItem = itemRepository.findOne(itemId);
+        findItem.setName(name);
+        findItem.setPrice(price);
+        findItem.setStockQuantity(stockQuantitiy);
+    }
+
     public List<Item> findItems() {
         return itemRepository.findAll();
     }
