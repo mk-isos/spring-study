@@ -66,6 +66,7 @@ public class InitDb {
             member.setAddress(new Address(city, street, zipcode));
             return member;
         }
+
         private Book createBook(String name, int price, int stockQuantity) {
             Book book = new Book();
             book.setName(name);
@@ -73,6 +74,7 @@ public class InitDb {
             book.setStockQuantity(stockQuantity);
             return book;
         }
+
         private Delivery createDelivery(Member member) {
             Delivery delivery = new Delivery();
             delivery.setAddress(member.getAddress());
