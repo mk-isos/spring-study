@@ -62,8 +62,10 @@ public class OrderQueryRepository {
     public List<OrderQueryDto> findAllByDto_optimization() {
         //루트 조회(toOne 코드를 모두 한번에 조회)
         List<OrderQueryDto> result = findOrders();
+
         //orderItem 컬렉션을 MAP 한방에 조회
         Map<Long, List<OrderItemQueryDto>> orderItemMap = findOrderItemMap(toOrderIds(result));
+
         //루프를 돌면서 컬렉션 추가(추가 쿼리 실행X)
         result.forEach(o -> o.setOrderItems(orderItemMap.get(o.getOrderId())));
         return result;
