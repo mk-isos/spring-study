@@ -8,37 +8,49 @@ group = 'jpabook'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
-	}
-}
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
+	toolchain { languageVersion = JavaLanguageVersion.of(21) }
 }
 
 repositories {
 	mavenCentral()
 }
 
+configurations {
+	compileOnly { extendsFrom annotationProcessor }
+}
+
+ext {
+	// Querydsl 최신 안정 버전
+	querydslVersion = '5.0.0'
+}
+
 dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+
 	implementation 'org.springframework.boot:spring-boot-devtools'
 	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.10.0'
-	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'com.h2database:h2'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5-jakarta'
 
 	implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
 	implementation 'org.hibernate.validator:hibernate-validator:8.0.1.Final'
-	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5-jakarta'
 
+
+	runtimeOnly 'com.h2database:h2'
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// ✅ Querydsl (jakarta 분류자 사용: Boot 3 계열 필수)
+	implementation "com.querydsl:querydsl-jpa:${querydslVersion}:jakarta"
+	annotationProcessor "com.querydsl:querydsl-apt:${querydslVersion}:jakarta"
+	// ✅ annotation processor가 jakarta API를 찾도록 보강 (환경에 따라 필요)
+	annotationProcessor "jakarta.persistence:jakarta.persistence-api:3.1.0"
+	annotationProcessor "jakarta.annotation:jakarta.annotation-api:2.1.1"
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {
