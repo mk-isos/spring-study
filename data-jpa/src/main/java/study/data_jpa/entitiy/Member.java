@@ -1,25 +1,36 @@
 package study.data_jpa.entitiy;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@ToString(of = {"id", "username", "age"}) //객체 찍을때 편하려고
 public class Member {
 
     @Id @GeneratedValue
+    @Column(name = "member_id")
     private Long id;
     private String username;
+    private int age;
 
-    protected Member() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "tema_id")
+    private Team team;
+
+    // 아래 대신 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+//    protected Member() {
+//    }
 
     public Member(String username) {
 
         this.username = username;
+    }
+
+    public void changeTeam(Team team) {
+        this.team = team;
+        team.getMembers().add(this);
     }
 }
