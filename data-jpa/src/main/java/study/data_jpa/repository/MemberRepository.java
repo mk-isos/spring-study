@@ -7,6 +7,7 @@ import study.data_jpa.dto.MemberDto;
 import study.data_jpa.entitiy.Member;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
@@ -22,4 +23,12 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     @Query("select new study.data_jpa.dto.MemberDto(m.id, m.username, t.name) " +
             "from Member m join m.team t")
     List<MemberDto> findMemberDto();
+
+    @Query("select m from Member m where m.username in :names")
+    List<Member> findByNames(@Param("names") List<String> names);
+
+
+//    List<Member> findByUsername(String name); //컬렉션
+//    Member findByUsername(String name); //단건
+//    Optional<Member> findByUsername(String name); //단건 Optional
 }
