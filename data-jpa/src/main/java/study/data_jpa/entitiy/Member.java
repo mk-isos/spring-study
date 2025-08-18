@@ -17,7 +17,7 @@ public class Member {
     private int age;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tema_id")
+    @JoinColumn(name = "team_id")
     private Team team;
 
     // 아래 대신 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -36,6 +36,11 @@ public class Member {
             changeTeam(team);
         }
 
+    }
+
+    public Member(String username, int age) {
+        this.username = username;
+        this.age = age;
     }
 
     public void changeTeam(Team team) {
