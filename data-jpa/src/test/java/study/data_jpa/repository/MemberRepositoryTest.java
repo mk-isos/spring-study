@@ -114,5 +114,19 @@ public class MemberRepositoryTest {
         assertThat(page.hasNext()).isTrue(); //다음 페이지가 있는가?
     }
 
+    @Test
+    public void bulkUpdate() throws Exception {
+    //given
+        memberRepository.save(new Member("member1", 10));
+        memberRepository.save(new Member("member2", 19));
+        memberRepository.save(new Member("member3", 20));
+        memberRepository.save(new Member("member4", 21));
+        memberRepository.save(new Member("member5", 40));
+    //when
+        int resultCount = memberRepository.bulkAgePlus(20); //DB에서는 1살 더 먹은걸로 되어있지만 영속성컨텐스트에서는 나이 그대로 남아있음. ->em.flush, em.clear 해주면 나이+1로 나옴.
+    //then
+        assertThat(resultCount).isEqualTo(3);
+    }
+
 
 }
