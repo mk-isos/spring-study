@@ -50,7 +50,7 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 //    List<Member> findByUsername(String name, Pageable pageable); //count 쿼리 사용
 //    List<Member> findByUsername(String name, Sort sort);
 
-    @Modifying
+    @Modifying(clearAutomatically = true)
     @Query("update Member m set m.age = m.age + 1 where m.age >= :age")
     int bulkAgePlus(@Param("age") int age);
 }

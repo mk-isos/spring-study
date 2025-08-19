@@ -123,7 +123,9 @@ public class MemberRepositoryTest {
         memberRepository.save(new Member("member4", 21));
         memberRepository.save(new Member("member5", 40));
     //when
-        int resultCount = memberRepository.bulkAgePlus(20); //DB에서는 1살 더 먹은걸로 되어있지만 영속성컨텐스트에서는 나이 그대로 남아있음. ->em.flush, em.clear 해주면 나이+1로 나옴.
+        int resultCount = memberRepository.bulkAgePlus(20);
+        //DB에서는 1살 더 먹은걸로 되어있지만 영속성컨텐스트에서는 나이 그대로 남아있음. ->em.flush, em.clear 해주면 나이+1로 나옴.
+        // 또는 리포지토리에서 @Modifying(clearAutomatically = true) 이거 해주기
     //then
         assertThat(resultCount).isEqualTo(3);
     }
