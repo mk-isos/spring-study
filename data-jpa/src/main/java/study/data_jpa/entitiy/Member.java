@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(of = {"id", "username", "age"}) //객체 찍을때 편하려고
-public class Member {
+public class Member extends JpaBaseEntity {
 
     @Id @GeneratedValue
     @Column(name = "member_id")
