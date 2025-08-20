@@ -61,7 +61,7 @@ class MemberTest {
 
     @Test
     public void jpaEventBaseEntity() throws Exception {
-//given
+        //given
         Member member = new Member("member1");
         memberRepository.save(member); //@PrePersist
 
@@ -70,13 +70,11 @@ class MemberTest {
 
         em.flush(); //@PreUpdate
         em.clear();
-//when
+        //when
         Member findMember = memberRepository.findById(member.getId()).get();
-//then
-        System.out.println("findMember.createdDate = " +
-                findMember.getCreatedDate());
-        System.out.println("findMember.updatedDate = " +
-                findMember.getUpdatedDate());
+        //then
+        System.out.println("findMember.createdDate = " + findMember.getCreatedDate());
+        System.out.println("findMember.updatedDate = " + findMember.getUpdatedDate());
     }
 
 
