@@ -14,6 +14,7 @@ public class MemberSpec {
             if (StringUtils.isEmpty(teamName)) {
                 return null;
             }
+
             Join<Member, Team> t = root.join("team", JoinType.INNER); //회원과 조인
             return builder.equal(t.get("name"), teamName);
         };
