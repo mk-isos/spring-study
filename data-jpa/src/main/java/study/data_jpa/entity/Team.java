@@ -1,4 +1,4 @@
-package study.data_jpa.entitiy;
+package study.data_jpa.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,7 +1,7 @@
 package study.data_jpa.dto;
 
 import lombok.Data;
-import study.data_jpa.entitiy.Member;
+import study.data_jpa.entity.Member;
 
 @Data
 public class MemberDto {

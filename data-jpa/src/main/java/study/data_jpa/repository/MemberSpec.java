@@ -4,8 +4,8 @@ import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.JoinType;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.util.StringUtils;
-import study.data_jpa.entitiy.Member;
-import study.data_jpa.entitiy.Team;
+import study.data_jpa.entity.Member;
+import study.data_jpa.entity.Team;
 
 public class MemberSpec {
 
