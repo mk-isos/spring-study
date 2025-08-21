@@ -14,6 +14,7 @@ import java.util.List;
 
 @SpringBootTest
 @Transactional
+@Commit
 class QuerydslApplicationTests {
 
 	@Autowired
