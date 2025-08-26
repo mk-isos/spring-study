@@ -412,6 +412,39 @@ public class QuerydslBasicTest {
                 .containsExactly(20, 30, 40);
     }
 
+    @Test
+    public void simpleProjection(){
+        //given
+        List<String> result = queryFactory
+                .select(member.username)
+                .from(member)
+                .fetch();
+        //when
+//        System.out.println("result = " + result);
+        for (String s : result) {
+            System.out.println("s = " + s);
+        }
+        //then
+    }
+
+    @Test
+    public void tupleProjection() {
+        List<Tuple> result = queryFactory
+                .select(member.username, member.age)
+                .from(member)
+                .fetch();
+
+        for (Tuple tuple : result) {
+            String username = tuple.get(member.username);
+            Integer age = tuple.get(member.age);
+            System.out.println("username=" + username);
+            System.out.println("age=" + age);
+
+        }
+    }
+
+
+
 
 
 }
